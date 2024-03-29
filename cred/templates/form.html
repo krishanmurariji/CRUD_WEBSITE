@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container card shadow-1g mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Date of Creation</th>
+                <th scope="col">Date of Updation</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in stu %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.created_at }}</td>
+                <td>{{ i.updated_at }}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a href="{% url 'remove_cart_items' i.uid %}" class="btn btn-danger btn-sm">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>&nbsp
+                        <a href="{% url 'update' i.uid %}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
